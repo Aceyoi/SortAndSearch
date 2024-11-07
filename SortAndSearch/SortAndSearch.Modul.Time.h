@@ -50,4 +50,27 @@ void Quicksort(vector<int>& array) {
 	auto duration = chrono::duration_cast<chrono::seconds>(end - start);
 	cout << "Время выполнения Quicksort: " << duration.count() << " секунд." << " Для " << array.size() << " чисел" << endl;
 }
+/////////////////////////////////////////////////////////
+void Mergesort(vector<int>& array) {
+	auto start = chrono::high_resolution_clock::now();
+	mergesort(array, 0, array.size());
+	auto end = chrono::high_resolution_clock::now();
+	auto duration = chrono::duration_cast<chrono::seconds>(end - start);
+	cout << "Время выполнения Mergesort: " << duration.count() << " секунд." << " Для " << array.size() << " чисел" << endl;
+}
 
+void Binsearch(vector<int>& array, int X) {
+	auto start = chrono::high_resolution_clock::now();
+	cout << binsearch(array, 0, array.size(), X);
+	auto end = chrono::high_resolution_clock::now();
+	auto duration = chrono::duration_cast<chrono::seconds>(end - start);
+	cout << "Время выполнения Binsearch: " << duration.count() << " секунд." << " Для " << array.size() << " чисел" << endl;
+}
+
+void Interpolationsearch(vector<int>& array, int X) {
+	auto start = chrono::high_resolution_clock::now();
+	cout << interpolationsearch(array, 0, array.size(), X);
+	auto end = chrono::high_resolution_clock::now();
+	auto duration = chrono::duration_cast<chrono::seconds>(end - start);
+	cout << "Время выполнения Interpolationsearch: " << duration.count() << " секунд." << " Для " << array.size() << " чисел" << endl;
+}

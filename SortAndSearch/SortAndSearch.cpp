@@ -20,27 +20,40 @@ int main(){
 	testcheck();
 
 	vector<int> array; // Создание интового векторногго массива
-	array.resize(XXXXX);
+	array.resize(XX);
 
 	vector<int> array1; // Создание интового векторногго массива
-	array1.resize(XXXXXXX);
+	array1.resize(XX);
 
 	vector<int> array2; // Создание интового векторногго массива
-	array2.resize(XXXXXX);
+	array2.resize(XX);
+
+	vector<int> array3; // Создание интового векторногго массива
+	array3.resize(XX);
+
+	vector<int> array4; // Создание интового векторногго массива
+	array4.resize(XXXXXXX);
 	
 	Random_array(array, MAX, MIN);
 	Random_array(array1, MAX, MIN);
 	Random_array(array2, MAX, MIN);
+	Random_array(array3, MAX, MIN);
+	Random_array(array4, MAX, MIN);
 	//Print_array_vector(array);
 
 	Bubblesort(array);
 	Shellsort(array1);
 	Quicksort(array2);
+	Mergesort(array3);
+	Binsearch(array4, 70);
+	Bubblesort(array4);
+	//Interpolationsearch(array4, 70);
 
+	cout << endl;
 	if (sort_check(array ) == true) { cout << "Проверка прошла успешно" << endl; }
 	if (sort_check(array1) == true) { cout << "Проверка прошла успешно" << endl; }
 	if (sort_check(array2) == true) { cout << "Проверка прошла успешно" << endl; }
-
+	if (sort_check(array3) == true) { cout << "Проверка прошла успешно" << endl; }
 
 	return 0;
 }

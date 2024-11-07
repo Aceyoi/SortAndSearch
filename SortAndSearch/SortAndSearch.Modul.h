@@ -67,6 +67,128 @@ void quicksort(vector<T>& arr, size_t begin, size_t end) {
 	}
 }
 
+template<typename T>
+void merging(vector<T>& a, size_t begin, size_t mid, size_t end) {
+	T* c = new T[end - begin];					//буфер дл€ хранени€ результата сли€ни€
+
+	size_t
+		left = begin,						//индекс элемента из левой области
+		right = mid,							//индекс элемента из правой области
+		i = 0;								//индекс массива c 
+
+	while (left < mid && right < end) {			//пока не достигнут конец одной из областей
+		if (a[left] <= a[right]) {				//сравниваютс€ значени€ из областей
+
+			c[i] = a[left];						// если left меньше right, то в индекс i массива с помещаем значение из левой области
+			left++;
+		}
+		else {
+			c[i] = a[right];					//в противном случае из правой
+			right++;
+		}
+		i++;
+	}
+	//помещаем оставшиес€ значени€ в массив c
+	if (left == mid) {							//если был достигнут конец левой части
+
+		while (right < end) {					//то помещаем значени€ из правой
+
+			c[i] = a[right];
+			right++;
+			i++;
+		}
+	}
+	else if (right == end) {					//если же был достигнут конец правой части
+
+		while (left < mid) {				// то помеащем зна€ени€ из левой
+
+			c[i] = a[left];
+			left++;
+			i++;
+		}
+	}
+
+	size_t j = 0;
+	while (j < end - begin) {					//помещение значений из массива с в массив а
+		a[begin + j] = c[j];
+		j++;
+	}
+	delete[] c;
+}
+
+///рекурсивна€ функци€ сортировки сли€нием по возрастанию
+/// a - сортируемыймассив
+///left - лева€ граница сортировки
+/// right - права€ граница сортировки
+/// 
+/// BigO = O(n log(n)) дл€ всех случаев
+template<typename T>
+void mergesort(vector<T>& a, size_t left, size_t right) {
+
+	if (left < right - 1) {
+		size_t mid = left + (right - left) / 2;
+		mergesort(a, left, mid);	//сортировка левой половины сортируемой области
+		mergesort(a, mid, right);  //сортировка правйо половины сортируемой области
+		merging(a, left, mid, right);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// ћетод бинарного поиска
+template <typename T>
+int binsearch(vector<T>& arr, size_t begin, size_t end, T value) {
+	size_t left = begin;
+	size_t right = end - 1;
+
+	while (left <= right) {
+		size_t mid = left + (right - left) / 2; // Ќаходим середину
+
+		if (arr[mid] == value) { // ≈сли найден
+			return value; // ¬озвращаем индекс
+		}
+		else if (arr[mid] < value) { // ≈сли значение больше, ищем справа
+			left = mid + 1;
+		}
+		else { // ≈сли значение меньше, ищем слева
+			right = mid - 1;
+		}
+	}
+	return -1; // ≈сли не найден
+}
+
+// ћетод интерпол€ционного поиска
+template <typename T>
+int interpolationsearch(vector<T>& arr, size_t begin, size_t end, T value) {
+	size_t left = begin;
+	size_t right = end - 1;
+
+	while (left <= right && value >= arr[left] && value <= arr[right]) {
+		// Ќаходим позицию, использу€ интерпол€цию
+		size_t pos = left + ((value - arr[left]) * (right - left) / (arr[right] - arr[left]));
+
+		if (arr[pos] == value) { // ≈сли найден
+			return value; // ¬озвращаем индекс
+		}
+		else if (arr[pos] < value) { // ≈сли значение больше, ищем справа
+			left = pos + 1;
+		}
+		else { // ≈сли значение меньше, ищем слева
+			right = pos - 1;
+		}
+	}
+	return -1; // ≈сли не найден
+}
+
 //ћетод на проверку сортировки от max к min или от min к max в динамическом массиве
 template <typename T>
 bool sort_check(vector<T>& arr) {
