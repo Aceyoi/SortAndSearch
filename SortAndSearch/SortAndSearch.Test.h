@@ -2,6 +2,7 @@
 #pragma once
 
 #include <cassert>
+#include "SortAndSearch.Modul.h"
 
 using namespace std;
 
@@ -31,9 +32,9 @@ void testcheck(){
 	shellsort(shellsortaverageCase);
 	shellsort(shellsortworstCase);
 
-	quicksort(quicksortbestCase, 0, quicksortbestCase.size());
-	quicksort(quicksortaverageCase, 0, quicksortaverageCase.size());
-	quicksort(quicksortworstCase, 0, quicksortworstCase.size());
+	quicksort(quicksortbestCase, 0, quicksortbestCase.size() - 1);
+	quicksort(quicksortaverageCase, 0, quicksortaverageCase.size() - 1);
+	quicksort(quicksortworstCase, 0, quicksortworstCase.size() - 1);
 
 	mergesort(mergesortbestCase, 0, mergesortbestCase.size());
 	mergesort(mergesortaverageCase, 0, mergesortaverageCase.size());
@@ -66,11 +67,11 @@ void testcheck(){
 	if (sort_check(mergesortworstCase) == true) { cout << "Проверка прошла успешно" << endl; }
 	else { cout << "Проверка провалена" << endl; };
 
-	assert(Binsearch(bubblesortbestCase, 7) == 7);
-	assert(Interpolationsearch(bubblesortbestCase, 7) == 7);
+	assert(binsearch(bubblesortbestCase, 0, bubblesortbestCase.size(), 7) == 7);
+	assert(interpolationsearch(bubblesortbestCase, 0, bubblesortbestCase.size(), 7) == 7);
 
-	assert(Binsearch(bubblesortbestCase, 11) == -1);
-	assert(Interpolationsearch(bubblesortbestCase, 11) == -1);
+	assert(binsearch(bubblesortbestCase, 0, bubblesortbestCase.size(), 11) == -1);
+	assert(interpolationsearch(bubblesortbestCase, 0, bubblesortbestCase.size(), 11) == -1);
 
 	cout << endl;
 }

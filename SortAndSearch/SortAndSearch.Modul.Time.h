@@ -44,7 +44,7 @@ void Shellsort(vector<int>& array) {
 
 void Quicksort(vector<int>& array) {
 	auto start = high_resolution_clock::now();
-	quicksort(array, 0, array.size());
+	quicksort(array, 0, array.size() - 1);
 	auto end = high_resolution_clock::now();
 	auto duration = duration_cast<seconds>(end - start);
 	cout << "Время выполнения Quicksort: " << duration.count() << " секунд." << " Для " << array.size() << " чисел" << endl;

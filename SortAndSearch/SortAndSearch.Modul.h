@@ -77,7 +77,8 @@ void quicksort(vector<T>& arr, size_t begin, size_t end) {
 
 	for (size_t i = begin + 1; i <= end; i++) {
 		if (arr[i] < arr[base]) {				//если элемент arr[i] меньше опорного
-			swap(arr[i], arr[++current]);  //меняем его и опорный элемент местами
+			swap(arr[i], arr[current + 1]); //меняем его и опорный элемент местами
+			current++;  
 		}
 	}
 	swap(arr[base], arr[current]);     //опорный элемент ставится на место последнего перемещеного
